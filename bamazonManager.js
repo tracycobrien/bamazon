@@ -31,6 +31,7 @@ async function asyncParallel() {
 connection.connect(function (err) {
 	if (err) throw err;
 	console.log("connected as id" + connection.threadId);
+	displayInventory();
 });
 
 function displayInventory() {
@@ -55,7 +56,7 @@ function inquirerForUpdates() {
 		name: "action",
 		type: "list",
 		message: "Choose an option below to manage current inventory:",
-		choices: ["Restock Inventory", "Add New Product", "Remove An Existing Product"]
+		choices: ["Restock Inventory", "Add New Product", "Remove An Existing Product", "View Products", "View Low Inventory"]
 	}]).then(function (answers) {
 		switch (answers.action) {
 			case 'Restock Inventory':
@@ -67,6 +68,10 @@ function inquirerForUpdates() {
 			case 'Remove An Existing Product':
 				removeRequest();
 				break;
+			case 'View Products':
+				displayInventory();
+			case 'View Low Inventory':
+				lowInv();
 		}
 	});
 };
@@ -99,78 +104,96 @@ function restockInventory(id, quant) {
 	});
 };
 
-function addRequest() {
-	inquirer.prompt([
+function lowInv() {
+	connection.query("SELECT * FROM products WHERE stock_quantity < 10", function (err, res) {
+		if (err) throw err;
+		if (res.length === 0) {
+			console.log("\nThere are no items low in stock.\n");
 
-		{
+
+
+			// connection.query(`UPDATE products SET stock_quantity = stock_quantity + ${quant} WHERE item_id = ${id}`);
+
+			// displayInventory();
+	}else{
+		console.log(res)
+	}
+
+	function addRequest() {
+		inquirer.prompt([
+
+			{
+				name: "ID",
+				type: "input",
+				message: "Add ID Number"
+
+			},
+			{
+				name: "Name",
+				type: "input",
+				message: "What is name of product you would like to stock?"
+			},
+			{
+				name: "Category",
+				type: "input",
+				message: "What is the category for product?"
+			},
+			{
+				name: "Price",
+				type: "input",
+				message: "What is the price for item?"
+			},
+			{
+				name: "Quantity",
+				type: "input",
+				message: "What is the quantity you would like to add?"
+			},
+
+		]).then(function (answer) {
+			var id = answer.ID;
+			var name = answer.Name;
+			var category = answer.Category;
+			var price = answer.Price;
+			var quantity = answer.Quantity;
+			buildNewItem(id, name, category, price, quantity);
+		});
+	};
+
+	function buildNewItem(id, name, category, price, quantity) {
+		debugger
+		connection.query("INSERT INTO products SET ? ",
+			[
+				{
+					item_id: id,
+					stock_quantity: quantity,
+					product_name: name,
+					price: price,
+					department_name: category
+
+				}
+			]
+		)
+			;
+		displayInventory();
+	};
+
+	function removeRequest() {
+		inquirer.prompt([{
 			name: "ID",
 			type: "input",
-			message: "Add ID Number"
+			message: "What is the item number of the item you would like to remove?"
+		}]).then(function (answer) {
+			var id = answer.ID;
+			removeInventory(id);
+		});
+	};
 
-		},
-		{
-			name: "Name",
-			type: "input",
-			message: "What is name of product you would like to stock?"
-		},
-		{
-			name: "Category",
-			type: "input",
-			message: "What is the category for product?"
-		},
-		{
-			name: "Price",
-			type: "input",
-			message: "What is the price for item?"
-		},
-		{
-			name: "Quantity",
-			type: "input",
-			message: "What is the quantity you would like to add?"
-		},
+	function removeInventory(id) {
+		connection.query('DELETE FROM Products WHERE item_id = ' + id);
+		displayInventory();
+	};
 
-	]).then(function (answer) {
-		var id = answer.ID;
-		var name = answer.Name;
-		var category = answer.Category;
-		var price = answer.Price;
-		var quantity = answer.Quantity;
-		buildNewItem(id, name, category, price, quantity);
+	displayInventory()
+
 	});
-};
-
-function buildNewItem(id, name, category, price, quantity) {
-	debugger
-	connection.query("INSERT INTO products SET ? ",
-		[
-			{
-				item_id : id,
-				stock_quantity: quantity,
-				product_name: name,
-				price: price,
-				department_name: category
-				
-			}
-		]
-	)
-		;
-	displayInventory();
-};
-
-function removeRequest() {
-	inquirer.prompt([{
-		name: "ID",
-		type: "input",
-		message: "What is the item number of the item you would like to remove?"
-	}]).then(function (answer) {
-		var id = answer.ID;
-		removeInventory(id);
-	});
-};
-
-function removeInventory(id) {
-	connection.query('DELETE FROM Products WHERE item_id = ' + id);
-	displayInventory();
-};
-
-displayInventory();
+}
