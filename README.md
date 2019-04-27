@@ -78,7 +78,6 @@ I saved and required the MySQL and Inquirer npm packages in my homework files be
 
 - - -
 ###  Screenshots
-<<<<<<< HEAD
 [good-news-your-item-is-in-stock] (goodnewsyourorderisinstock.jpeg)
 [view-products-for-sale] (ViewProducts.jpeg)
 [view-low-inventory] (restockinventory.jpeg)
@@ -86,15 +85,7 @@ I saved and required the MySQL and Inquirer npm packages in my homework files be
 [add-new-product] (AddANewProduct.jpeg)
 [what-would-you-like-to-purchase] (whatwouldyouliketopurchase.jpeg)
 [remove-a-product] (removeaproduct.jpeg)
-=======
-[good news your item is in stock] (./bamazon screenshots/goodnewsyourorderisinstock.jpeg)
-[view products for sale] (ViewProducts.jpeg)
-[view low inventory] (restockinventory.jpeg)
-[add to inventory] (updatedquanity.jpeg)
-[add new product] (AddANewProduct.jpeg)
-[what would you like to purchase] (whatwouldyouliketopurchase.jpeg)
-[remove a product] (removeaproduct.jpeg)
->>>>>>> b7176a3b1594299362f641f61fcf5412d6e291d5
+
 
 
 
