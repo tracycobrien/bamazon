@@ -12,12 +12,6 @@ I saved and required the MySQL and Inquirer npm packages in my homework files be
 
 * I have included screen shots of each step of the building process, showing how it works it is below in this `README.md` file.
 
-* 
-
-### Commits
-
-H
-
 ## Instructions
 
 ### The scree shots will show the below:
@@ -40,12 +34,12 @@ H
 
 4. The database has 10 different products. (i.e. Insert "mock" data rows into this database and table).
 
-5. There is a Node application called `bamazonCustomer.js`. Running this application will first display all of the items available for sale. It include the ids, names, and prices of products for sale.
+5. There is a Node application called `bamazonCustomer.js`. Running this application will first display all of the items available for sale. It includes the ids, names, and prices of products for sale.
 
-6. The app should then prompts users with two messages.
+6. The app then prompts users with two messages.
 
-   * The first should ask them the ID of the product they would like to buy.
-   * The second message should ask how many units of the product they would like to buy.
+   * The first asks them the ID of the product they would like to buy.
+   * The second message asks how many units of the product they would like to buy.
 
 7. Once the customer has placed the order, we check our store to see if it has enough of the product to meet the customer's request.
 
@@ -74,15 +68,25 @@ H
     
     * Add New Product
 
-  * If a manager selects `View Products for Sale`, the app should list every available item: the item IDs, names, prices, and quantities.
+  * If a manager selects `View Products for Sale`, the app lists every available item: the item IDs, names, prices, and quantities.
 
-  * If a manager selects `View Low Inventory`, then it should list all items with an inventory count lower than five.
+  * If a manager selects `View Low Inventory`, then it lists all items with an inventory count lower than five.
 
-  * If a manager selects `Add to Inventory`, your app should display a prompt that will let the manager "add more" of any item currently in the store.
+  * If a manager selects `Add to Inventory`, my app will display a prompt that will let the manager "add more" of any item currently in the store.
 
   * If a manager selects `Add New Product`, it should allow the manager to add a completely new product to the store.
 
 - - -
-###  Manager View 
+###  Screenshots
+[good news your item is in stock] (goodnewsyourorderisinstock.jpeg)
+[view products for sale] (ViewProducts.jpeg)
+[view low inventory] (restockinventory.jpeg)
+[add to inventory] (updatedquanity.jpeg)
+[add new product] (AddANewProduct.jpeg)
+[what would you like to purchase] (whatwouldyouliketopurchase.jpeg)
+[remove a product] (removeaproduct.jpeg)
 
-[]
+
+
+
+
