@@ -85,6 +85,7 @@ I saved and required the MySQL and Inquirer npm packages in my homework files be
 ![add-new-product](AddANewProduct.jpeg)
 ![what-would-you-like-to-purchase](whatwouldyouliketopurchase.jpeg)
 ![remove-a-product](removeaproduct.jpeg)
+![restock-inventory](restockinventory.jpeg)
 
 
 
