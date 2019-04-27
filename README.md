@@ -78,7 +78,7 @@ I saved and required the MySQL and Inquirer npm packages in my homework files be
 
 - - -
 ###  Screenshots
-[good news your item is in stock] (goodnewsyourorderisinstock.jpeg)
+[good news your item is in stock] (./bamazon screenshots/goodnewsyourorderisinstock.jpeg)
 [view products for sale] (ViewProducts.jpeg)
 [view low inventory] (restockinventory.jpeg)
 [add to inventory] (updatedquanity.jpeg)
